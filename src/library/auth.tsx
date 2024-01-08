@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { connectDb } from "./connectdb";
 import { User } from "./model";
 import bcrypt from "bcryptjs";
+import { authConfig } from "./auth.config";
 
 const login = async (credentials: any) => {
   try {
@@ -78,5 +79,6 @@ export const {
 
       return true;
     },
+    ...authConfig.callbacks,
   },
 });
