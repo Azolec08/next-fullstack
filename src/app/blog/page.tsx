@@ -8,8 +8,20 @@ export const metadata: Metadata = {
   description: "Blog Description",
 };
 
+// process.env.POSTS
+
+const getMyPost = async () => {
+  const data = await fetch(`${process.env.POSTS}`);
+
+  if (!data.ok) {
+    throw new Error("Semething went wrong");
+  }
+
+  return data.json();
+};
+
 const Blog = async () => {
-  const Posts = await getPosts();
+  const Posts = await getMyPost();
   return (
     <section>
       <div className="flex flex-col md:grid grid-cols-2 ">

@@ -2,6 +2,7 @@ import React from "react";
 import { mongoType } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+import "./componentStyle.scss";
 
 type postsPorps = {
   posts: mongoType;
@@ -9,7 +10,7 @@ type postsPorps = {
 
 const PostCard = ({ posts }: postsPorps) => {
   return (
-    <div className="w-full flex justify-center py-4">
+    <div className="show-bottom w-full flex justify-center py-4">
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure className="relative h-56">
           <Image src={posts.image} alt="Shoes" fill priority={true} />
