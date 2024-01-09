@@ -3,9 +3,10 @@ import AdminPostForm from "@/components/adminPostFom/AdminPostForm";
 import AdminUser from "@/components/adminUser/AdminUser";
 import AdminUserForm from "@/components/adminUserForm/AdminUserForm";
 import React, { Suspense } from "react";
+import { auth } from "@/library/auth";
 
-Suspense;
-const Admin = () => {
+const Admin = async () => {
+  const session = await auth();
   return (
     <section className="grid grid-cols-2">
       <div className="flex justify-center p-4">
@@ -14,7 +15,7 @@ const Admin = () => {
         </Suspense>
       </div>
       <div>
-        <AdminPostForm />
+        <AdminPostForm userId={session.user?.id} />
       </div>
       <div>
         <Suspense fallback={<div>Loading...</div>}>
