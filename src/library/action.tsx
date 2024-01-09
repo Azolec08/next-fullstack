@@ -19,6 +19,55 @@ export const deletePost = async (formData: any) => {
   }
 };
 
+//add users
+
+export const deleteUser = async (previousState: any, formData: any) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectDb();
+    await Post.deleteMany({ userId: id });
+    await User.findByIdAndDelete(id);
+    console.log("Your post has been deleted");
+    revalidatePath("/admin");
+    revalidatePath("/admin");
+  } catch (error) {
+    console.log(error);
+    return "something went wrong";
+  }
+};
+
+//add User
+
+export const addUser = async (previousState: any, formData: any) => {
+  //   const title = formData.get("title");
+  //   const author = formData.get("author");
+  //   const imageLink = formData.get("imageLink");
+  //   const userId = formData.get("userId");
+  //   const slug = formData.get("slug");
+
+  // console.log(title, author, imageLink, userId, slug);
+
+  const { userName, password, email, image } = Object.fromEntries(formData);
+
+  try {
+    connectDb();
+    const newUser = new User({
+      userName,
+      password,
+      email,
+      image,
+    });
+
+    await newUser.save();
+    console.log("Your post has been saved to db");
+    revalidatePath("/blog");
+  } catch (error) {
+    console.log(error);
+    return "something went wrong";
+  }
+};
+
 export const addPost = async (formData: any) => {
   //   const title = formData.get("title");
   //   const author = formData.get("author");
@@ -43,6 +92,7 @@ export const addPost = async (formData: any) => {
     await newPost.save();
     console.log("Your post has been saved to db");
     revalidatePath("/blog");
+    revalidatePath("/admin");
   } catch (error) {
     console.log(error);
     return "something went wrong";

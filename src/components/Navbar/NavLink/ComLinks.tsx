@@ -33,13 +33,11 @@ const ComLink = ({ session }: any) => {
           {session?.user ? (
             <>
               {session.user?.isAdmin && (
-                <>
-                  {console.log("isAdmin: true")}
-                  <Links
-                    datas={{ title: "Admin", path: "/admin", style: "p-2" }}
-                  />
-                </>
+                <Links
+                  datas={{ title: "Admin", path: "/admin", style: "p-2" }}
+                />
               )}
+
               <form action={handleLogout}>
                 <button className="px-2 py-2 text-xs rounded-md bg-blue-500 text-white">
                   Logout

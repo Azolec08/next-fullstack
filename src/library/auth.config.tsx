@@ -4,7 +4,7 @@ export const authConfig = {
   },
   providers: [],
   callbacks: {
-    async wjt({ token, user }: any) {
+    async jwt({ token, user }: any) {
       if (user) {
         token.id = user.id;
         token.isAdmin = user.isAdmin;

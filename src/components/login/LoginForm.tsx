@@ -2,13 +2,10 @@
 
 import { login } from "@/library/action";
 import { useFormState } from "react-dom";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 const LoginForm = () => {
   const [state, formAction] = useFormState(login, undefined);
-
-  // const router = useRouter();
 
   // useEffect(() => {
   //   state;
