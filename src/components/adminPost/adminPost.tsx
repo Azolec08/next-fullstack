@@ -12,7 +12,7 @@ const AdminPost = async () => {
           <div className="p-2" key={posts.id}>
             <div className="card w-72 bg-base-100 shadow-xl image-full">
               <figure>
-                <Image src={posts.image} alt="Shoes" fill />
+                <Image src={posts.image || "/nonImage.jpg"} alt="Shoes" fill />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{posts.title}</h2>

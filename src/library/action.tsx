@@ -5,6 +5,21 @@ import { Post, User } from "./model";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcryptjs";
 
+export const myDeletePost = async (formData: any) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectDb();
+    await Post.findByIdAndDelete(id);
+    console.log("Your post has been deleted");
+    revalidatePath("/blog");
+    revalidatePath("/admin");
+  } catch (error) {
+    console.log(error);
+    return "something went wrong";
+  }
+};
+
 export const deletePost = async (formData: any) => {
   const { id } = Object.fromEntries(formData);
 
@@ -13,6 +28,7 @@ export const deletePost = async (formData: any) => {
     await Post.findByIdAndDelete(id);
     console.log("Your post has been deleted");
     revalidatePath("/blog");
+    revalidatePath("/admin");
   } catch (error) {
     console.log(error);
     return "something went wrong";
@@ -21,7 +37,7 @@ export const deletePost = async (formData: any) => {
 
 //add users
 
-export const deleteUser = async (previousState: any, formData: any) => {
+export const deleteUser = async (formData: any) => {
   const { id } = Object.fromEntries(formData);
 
   try {
@@ -68,7 +84,7 @@ export const addUser = async (previousState: any, formData: any) => {
   }
 };
 
-export const addPost = async (formData: any) => {
+export const addPost = async (previuosState: any, formData: any) => {
   //   const title = formData.get("title");
   //   const author = formData.get("author");
   //   const imageLink = formData.get("imageLink");
@@ -95,7 +111,7 @@ export const addPost = async (formData: any) => {
     revalidatePath("/admin");
   } catch (error) {
     console.log(error);
-    return "something went wrong";
+    return { error: "something went wrong" };
   }
 };
 
