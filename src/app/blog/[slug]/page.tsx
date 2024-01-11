@@ -45,7 +45,7 @@ const Page = async ({ params }: any) => {
           <p>If a dog chews shoes whose shoes does he choose?</p>
           <div className="card-actions justify-end">
             <Link href="/">
-              <button className="btn btn-primary">Go Back</button>
+              <button className="btn btn-primary">Go Back to page</button>
             </Link>
           </div>
         </div>
