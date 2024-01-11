@@ -1,7 +1,7 @@
 import React from "react";
 import { getAllUsers } from "@/library/utils";
 import Image from "next/image";
-import { deletePost } from "@/library/action";
+import { deleteUser } from "@/library/action";
 const AdminPost = async () => {
   const users = await getAllUsers();
 
@@ -17,7 +17,7 @@ const AdminPost = async () => {
               <div className="card-body">
                 <h2 className="card-title">{posts.userName}</h2>
                 <p>{}</p>
-                <form action={deletePost} className="card-actions justify-end">
+                <form action={deleteUser} className="card-actions justify-end">
                   <button className="btn btn-primary">Delete</button>
                 </form>
               </div>

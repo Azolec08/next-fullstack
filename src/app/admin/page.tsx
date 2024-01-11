@@ -15,7 +15,7 @@ const Admin = async () => {
         </Suspense>
       </div>
       <div>
-        <AdminPostForm userId={session.user?.id} />
+        <AdminPostForm userId={session?.user?.id} />
       </div>
       <div>
         <Suspense fallback={<div>Loading...</div>}>

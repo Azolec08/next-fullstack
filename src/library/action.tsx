@@ -84,7 +84,7 @@ export const addUser = async (previousState: any, formData: any) => {
   }
 };
 
-export const addPost = async (previuosState: any, formData: any) => {
+export const addPost = async ({ previuosState, formData }: any) => {
   //   const title = formData.get("title");
   //   const author = formData.get("author");
   //   const imageLink = formData.get("imageLink");
